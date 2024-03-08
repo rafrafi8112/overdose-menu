@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu Gallery</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+  }
+  .gallery-container {
+    width: 100%;
+    position: relative;
+  }
+  .gallery-image {
+    width: 100%;
+    display: none; /* Hide images by default */
+  }
+  .active {
+    display: block; /* Show active image */
+  }
+  .btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 100;
+  }
+  .btn.prev {
+    left: 10px;
+  }
+  .btn.next {
+    right: 10px;
+  }
+</style>
+</head>
+<body>
+
+<div class="gallery-container">
+  <!-- The images -->
+  <img class="gallery-image active" src="./429351540_1358225228225950_7320044955372187809_n (1).jpg" alt="Menu 1">
+  <img class="gallery-image" src="./429293098_429689912852033_4499637198012479850_n (1).jpg" alt="Menu 2">
+  <img class="gallery-image" src="./429134918_938357158015662_6722300244135572834_n (1).jpg" alt="Menu 3">
+  <img class="gallery-image" src="./428912672_813141143976695_5102616720025794038_n (1).jpg" alt="Menu 4">
+  <img class="gallery-image" src="./428523582_2287590681437862_6111005384926952749_n (1).jpg" alt="Menu 5">
+  <!-- The buttons -->
+  <button class="btn prev" onclick="changeSlide(-1)">❮ Prev</button>
+  <button class="btn next" onclick="changeSlide(1)">Next ❯</button>
+</div>
+
+<script>
+let slideIndex = 0;
+showSlides(slideIndex);
+
+function changeSlide(n) {
+  slideIndex += n;
+  showSlides(slideIndex);
+}
+
+function showSlides(n) {
+  let i;
+  let slides = document.getElementsByClassName("gallery-image");
+  if (n >= slides.length) {slideIndex = 0}
+  if (n < 0) {slideIndex = slides.length - 1}
+  for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";  
+  }
+  slides[slideIndex].style.display = "block";
+}
+</script>
+
+</body>
+</html>
